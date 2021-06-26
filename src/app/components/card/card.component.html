@@ -1,0 +1,104 @@
+<div class="container" *ngIf="flag == true">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let post of posts">
+            <div class="card">
+                <div class="author container">
+                    <img [src]="post.owner.picture" class="img" alt="">
+                    <h5 data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(post.owner.id)">{{ post.owner.firstName }} {{ post.owner.lastName }} </h5>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content" *ngIf="flagHidden == true">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><img [src]="users.picture" alt=""> {{ users.firstName }} {{ users.lastName }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <strong>Fecha de nacimiento: </strong>{{users.dateOfBirth | date}} <br> <strong>Genero: </strong> {{users.gender}} <br> <strong>Email: </strong> {{users.email}} <br> <strong>Ciudad: </strong>{{users.location.city}}
+                                    <br> <strong>Telefono: </strong>{{users.phone}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img [src]="[post.image]" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ post.text }} </h5>
+                    <a [href]=" [post.link] "> {{ post.link }} </a>
+                </div>
+                <div class="tags container">
+                    <a (click)="filterTag(tag)" *ngFor="let tag of post.tags">#{{ tag }}</a>
+                </div>
+
+
+                <div class="likes container">
+                    <img src="../../../assets/svg/heart.svg" alt=""><span> {{ post.likes }} </span>
+                </div>
+
+                <div class="card-footer">
+                    <i class="bi bi-heart-fill"></i>
+                    <small class="text-muted"> {{ post.publishDate | date }} </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<div class="container" *ngIf="flag == false">
+    <button class="btn btn-success mt-5" (click)="flag = true">Volver </button>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col" *ngFor="let valTag of valTags">
+            <div class="card">
+                <div class="author container">
+                    <h5 data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="openModal(valTag.owner.id)">{{ valTag.owner.firstName }} {{ valTag.owner.lastName }} </h5>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content" *ngIf="flagHidden == true">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel"><img [src]="users.picture" alt=""> {{ users.firstName }} {{ users.lastName }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <strong>Fecha de nacimiento: </strong>{{users.dateOfBirth | date}} <br> <strong>Genero: </strong> {{users.gender}} <br> <strong>Email: </strong> {{users.email}} <br> <strong>Ciudad: </strong>{{users.location.city}}
+                                    <br> <strong>Telefono: </strong>{{users.phone}}
+                                </div>
+                                <hr>
+                                <h4>Comentarios</h4>
+                                ;<br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img [src]="[valTag.image]" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ valTag.text }} </h5>
+                    <a [href]=" [valTag.link] "> {{ valTag.link }} </a>
+                </div>
+                <div class="tags container">
+                    <a (click)="filterTag(tag)" *ngFor="let tag of valTag.tags">#{{ tag }}</a>
+                </div>
+
+                <div class="likes container">
+                    <span> {{ valTag.likes }} </span>
+                </div>
+
+                <div class="card-footer">
+                    <i class="bi bi-heart-fill"></i>
+                    <small class="text-muted"> {{ valTag.publishDate | date }} </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

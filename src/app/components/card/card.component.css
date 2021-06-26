@@ -1,0 +1,25 @@
+.card {
+    margin: 1em;
+}
+
+.tags {
+    color: blue;
+}
+
+.tags:hover {
+    color: rgb(0, 255, 221);
+    cursor: pointer;
+}
+
+.img {
+    border-radius: 3em;
+    width: 2.5em;
+}
+
+.author {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 4em;
+}
