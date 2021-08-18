@@ -4,14 +4,13 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class DummyService {
- BASE_URL: string = 'https://dummyapi.io/data/api/';
-  token: string = '60d795341bbcb6644bcf8655'
+ BASE_URL: string = 'https://dummyapi.io/data/v1/';
+  token: string = '611d01c3acc1e665eb68e57c'
   
 
   constructor(private http: HttpClient) { }
 
   getUser(id: string){
-
     return this.http.get(`${this.BASE_URL}user/${id}`, { headers: { 'app-id': this.token } })
   }
 

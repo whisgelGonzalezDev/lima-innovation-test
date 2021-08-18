@@ -30,7 +30,6 @@ export class CardComponent implements OnInit {
     this.flagHidden = true;
     this.service.getUser(id).subscribe(response => {
       this.users = response
-      console.log(response)
     })
 
   }
@@ -39,14 +38,12 @@ export class CardComponent implements OnInit {
     this.service.getAllTag(tagTitle).subscribe((response: any) => {
       this.valTags = response.data
       this.flag = false
-      console.log(response)
     })
   }
 
   getComments(id: string) {
     this.service.getComments(id).subscribe((response:any) => {
       this.users = response.data
-      console.log(response)
 
     })
   }
